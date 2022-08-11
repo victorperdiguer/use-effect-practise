@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# React, life cycle & useEffect 🌈
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Right now you already know a lot about two react hooks: <code>useState</code> and <code>useEffect</code>. In this exercise you will practise both!
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Iteration 1: simple counter 🔢
 
-### `npm start`
+In the <code>Counter</code> component, create a function called <code>handleIncrease</code> that, when passed to the "onClick" event of the increase button, will increase the count state by 1.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Then, create a function called <code>handleDecrease</code> that, when passed to the "onClick" event of the decrease button, will decrease the count state by 1.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Iteration 2: initial render random 🎱
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Do you see the "count" state in the <code>Counter</code> component? By default it is initiallized to 0.
 
-### `npm run build`
+Now use a hook to give the component the following effect: **when the component just mounted**, and **only the first time it renders**, it should update the state and set it to a random number betwen 0 and 10.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This way, everytime we refresh our page, we should see a different initial value for the counter.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The increase and decrease buttons should still work.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> 💡 Note: might want to remember how the Math.random() worked for this iteration.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Iteration 3: color change 🎨
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+We want to add another effect to our component <code>Counter</code>: the color of the counter number should change:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- If it is 0 or less, it should be red
+- If it is a number between 0 and 5, it should be orange
+- If it is a number bigger than 5, it should be green
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This effect should apply everytime the "count" state is changed.
 
-## Learn More
+> 💡 Note: you already have the classes ready in the <code>App.css</code> file, and the class is already dynamic. Everything is set so you can focus on the hooks.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Iteration 4: toggle, toggle, dubidu 🧠
 
-### Code Splitting
+Let's move to the <code>App.jsx</code> component one second.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+As you can see, the Counter component is only shown because the toggle in the state of App is set up to <code>true</code>.
 
-### Analyzing the Bundle Size
+Create a button in the <code>App.jsx</code> component that, when clicked, will hide the Counter component by setting the state to false.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## Iteration 5: clean up your mess! 🧹
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Go back to the <code>Counter.jsx</code> component again. 
 
-### Advanced Configuration
+Write the necessary code to make sure that, **when the Counter component unmounts** (for instance, when we click the hide button on <code>App.jsx</code>):
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- The count state is back to 0
+- The dynamic class state is back to 'text'
+- You display the following console.log, to test everything is right:
 
-### Deployment
+```js
+console.log('All clean here. Count:', count, 'Class:', dynamicClass);
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+All done ✅
