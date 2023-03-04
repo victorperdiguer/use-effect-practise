@@ -15,6 +15,9 @@ export default function Counter() {
   }
 
   // Second and Fourth iteration
+  useEffect (() => {
+    setCount(Math.floor(Math.random() * 11));
+  }, [])
 
   // Third iteration
 
